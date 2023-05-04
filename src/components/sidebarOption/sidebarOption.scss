@@ -1,0 +1,38 @@
+@import "../../base.scss";
+
+.sidebarCont__option {
+  &__cont {
+    &:hover {
+      background-color: $black-secondary;
+      border-radius: 40px;
+    }
+    span {
+      font-size: 1.5em;
+      padding-bottom: 0 !important;
+    }
+  }
+}
+
+.mobile {
+  .sidebarCont__option__cont {
+    &:hover {
+      background-color: inherit !important;
+      border-radius: 0;
+    }
+  }
+}
+
+@media (max-width: $breakpoint-large) {
+  .sidebarCont__option__cont {
+    span {
+      display: none;
+    }
+  }
+}
+@media (max-width: $breakpoint-small) {
+  .sidebarCont__option__cont {
+    span {
+      display: block;
+    }
+  }
+}

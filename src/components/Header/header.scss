@@ -1,0 +1,18 @@
+@import "../../base.scss";
+
+.header {
+  border-bottom: $border-color 0.7px solid;
+  position: -webkit-sticky;
+  position: sticky;
+  background-color: transparentize($color: $black, $amount: 0.3);
+  top: 0;
+  z-index: 1;
+  &__bottom {
+    p {
+      height: 40px;
+    }
+    p {
+      border-bottom: solid 3px $blue !important;
+    }
+  }
+}

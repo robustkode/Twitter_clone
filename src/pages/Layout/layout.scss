@@ -1,0 +1,22 @@
+@import "../../base.scss";
+
+.middle {
+  border-left: solid 1px $border-color;
+  border-right: solid 1px $border-color;
+}
+
+@media (max-width: $breakpoint-medium) {
+  .widget {
+    display: none !important;
+
+    * {
+      display: inherit !important;
+    }
+    // &__trends {
+    //   display: none !important;
+    //   div {
+    //     display: none !important;
+    //   }
+    // }
+  }
+}

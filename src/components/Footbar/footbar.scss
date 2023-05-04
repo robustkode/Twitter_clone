@@ -1,0 +1,9 @@
+@import "../../base.scss";
+
+.footbar {
+  position: fixed;
+  bottom: 0;
+  z-index: 1;
+  background-color: $black;
+  width: 100%;
+}

@@ -1,0 +1,10 @@
+@import "./base.scss";
+
+.App {
+  .inactive {
+    color: $text-inactive-color;
+  }
+  p {
+    margin-bottom: 0 !important;
+  }
+}
