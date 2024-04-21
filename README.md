@@ -1,70 +1,113 @@
-# Getting Started with Create React App
+# Water Bottle Image Classication Using CNN
+  ![glass-bottle-different-water-levels-14101289](https://user-images.githubusercontent.com/110838853/211681792-09189c4d-567b-4a9d-8857-c0979eecbfbc.jpg)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Objective: 
+image classification model to classify water bottles as Full,Half,Overflowing Water bottles based on water level inside
 
-## Available Scripts
+## Data Collection,Preprocessing And Model training and Deployment
 
-In the project directory, you can run:
+#### 1.   Collect a labeled dataset of images of water bottles, with each image labeled with the corresponding water level (full, half, or overflowing).
+This dataset will be used to train and evaluate the CNN model.
 
-### `npm start`
+Consider collecting a diverse and representative set of images to improve the model's generalizability.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+The images in this dataset were obtained [Water Bottle Dataset](https://www.kaggle.com/datasets/chethuhn/water-bottle-dataset)
+from Kaggle.
+#### 2.   Preprocess the images as needed, such as by resizing or cropping them.
+Preprocessing the images can help to ensure that they are in a consistent format and ready for use as input to the CNN.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Common preprocessing techniques include resizing, cropping, and normalization.
 
-### `npm test`
+![1_wYu4oK_TgFUvdlH5kq-Axw](https://user-images.githubusercontent.com/110838853/212464192-26a72a0a-1777-435c-a560-df02e641a83c.png)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+#### 3. Use data augmentation techniques to increase the size of the dataset and improve model generalization.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Data augmentation involves generating additional training data by applying transformations to the existing data.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+This can help to prevent overfitting and improve the model's performance on new, unseen data.
+#### 4. Convert the images to a size of 256x256 and ensure that they have 3 channels (RGB).
+The CNN model will expect input images to be in a specific format, such as a certain size and number of channels.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Converting the images to the required format is an important step in preparing the data for use as input to the model.
+#### 5. Split the dataset into training and validation sets.
+The training set will be used to train the CNN model, while the validation set will be used to evaluate the model's performance during training.
 
-### `npm run eject`
+A common split is to use 80% of the data for training and 20% for validation.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+#### 6. Implement a CNN using TensorFlow and Keras.
+TensorFlow is a popular machine learning library that can be used to implement and train neural networks.
+Keras is a high-level API for building and training neural networks that runs on top
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+#### 7. How the Image data works in my Model 
+![jmV3oAz](https://user-images.githubusercontent.com/110838853/212463553-57589f0e-b27c-448a-8bb7-9d2c4f6eb729.jpg)
+a)Input: The model takes in images of water bottles as input. These images are typically preprocessed and resized to a fixed size (e.g. 256x256 pixels) before being fed into the model.
 
-## Learn More
+b)Convolutional Layers: The model then applies a series of convolutional layers to extract features from the input images. These layers use filters (also called kernels or weights) to detect patterns in the images, such as edges or textures. The filters are typically small (e.g. 3x3 pixels) and move across the entire image, creating a feature map for each filter. The number of filters in each layer and their stride (i.e. how much they move) can be adjusted to control the complexity of the model.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+c)Pooling Layers: The model also applies pooling layers to the feature maps, which down-sample the maps by taking the maximum or average of a group of adjacent pixels. This reduces the dimensionality of the data and helps to make the model more robust to small variations in the input images.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+d)Fully Connected Layers: After the convolutional and pooling layers, the model flattens the feature maps and applies a series of fully connected layers (also called dense layers) to make the final predictions. These layers use weights to combine the features from the previous layers and produce a probability for each class. The number of neurons in these layers and their activation functions can be adjusted to control the model's capacity.
 
-### Code Splitting
+e)Output: The model produces a probability for each class, which can be converted into a predicted class using a classifier such as argmax or softmax. The model can also be fine-tuned using the loss function and optimizer.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Overall, the model takes in an image of a water bottle and applies a series of convolutional and pooling layers to extract features from the image. These features are then passed through fully connected layers to make the final prediction. This process is known as feature extraction and it is the backbone of CNNs.
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+#### 8. Use the Adam optimizer and a batch size of 32 to train the model on the training set.
+The Adam optimizer is a popular choice for training neural networks, as it can adapt the learning rate for each parameter during training.
 
-### Advanced Configuration
+The batch size determines the number of samples to work through before the model's weights are updated. 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+A larger batch size can lead to faster training times, but may also result in less stable gradients.
 
-### Deployment
+#### 9. Use class weights to address imbalanced classes in the dataset.
+If the dataset is imbalanced, with some classes being much more common than others, the model may be biased towards the more common classes.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Class weights can be used to balance the loss function, so that the model pays more attention to the less common classes.
 
-### `npm run build` fails to minify
+Monitor the model's performance on the validation set during training.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+#### 10. Use the validation set to evaluate the model's performance as it is being trained.
+
+This can help to identify overfitting and ensure that the model is generalizing well to new, unseen data.
+
+#### 11.  Calculate performance metrics such as precision, recall, validation loss, and accuracy loss.
+Performance metrics can provide insights into the model's strengths and weaknesses and help to identify areas for improvement.
+
+Precision and recall are useful for evaluating the model's ability to classify samples correctly.
+
+Validation loss and accuracy loss can be used to monitor the model's performance on the validation set and identify overfitting.
+
+#### 12.  Deploy the model using Gradio for real-time classification.
+Gradio is a library that makes it easy to deploy machine learning models for real-time use.
+
+Use Gradio to create a user interface for the model, allowing users to input images and receive predictions from the model.
+#### 13.  Use the trained model to classify new images of water bottles and predict the water level inside.
+Once the model has been trained and deployed, it can be used to classify new images of water bottles and predict the water level inside.
+
+This can be useful for automating the process of monitoring water levels, reducing the need for manual inspection.
+
+The model can be used with the user interface created in step 11 to allow users to input images and receive predictions in real-time.
+
+
+## Folder Structre 
+
+### [Dataset](https://github.com/chethanhn29/Water_bottle_classication_model/tree/main/Dataset)  
+This folder contains the labeled dataset of images of water bottles that was used to train and evaluate the CNN model. The images are labeled with the corresponding water level (full, half, or overflowing).
+
+### [Model](https://github.com/chethanhn29/Water_bottle_classication_model/tree/main/Model)
+This folder contains the trained CNN model and any associated files, such as the model architecture, weights, and training history.
+
+### [Deployed Model Predictions](https://github.com/chethanhn29/Water_bottle_classication_model/tree/main/Deployed%20Model%20Predictions)
+This folder contains example predictions made by the deployed model on new, unseen data.
+
+### [Source Code](https://github.com/chethanhn29/Water_bottle_classication_model/tree/main/Source%20Code)
+This folder contains the source code for this project, including the code for data preprocessing, model training and evaluation, and model deployment.
+
+### [Documentation](https://github.com/chethanhn29/Water_bottle_classication_model/tree/main/Documentation)
+This folder contains any additional documentation for this project, such as project reports, presentations, and user guides.
