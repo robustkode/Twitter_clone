@@ -1,6 +1,10 @@
 # Water Bottle Image Classication Using CNN
   ![glass-bottle-different-water-levels-14101289](https://user-images.githubusercontent.com/110838853/211681792-09189c4d-567b-4a9d-8857-c0979eecbfbc.jpg)
 
+## Some Note
+Living in an area disconnected from the internet, I've resorted to working on and storing my projects locally on my computer. Fortunately, recently I can access the internet within a governmental institution, providing me with the opportunity to upload some of my projects.
+
+
 ## Objective: 
 image classification model to classify water bottles as Full,Half,Overflowing Water bottles based on water level inside
 
